@@ -1,0 +1,17 @@
+version: '3.5'
+services:
+
+  api:
+    image: "node:8"
+    container_name: react-app
+    working_dir: /var/www/app
+    restart: always
+    ports:
+      - "${PORT}:${PORT}"
+    expose:
+      - "${PORT}"
+    command: "npx react-scripts start"
+    volumes:
+      - ./app:/var/www/app
+    env_file:
+      - .env
